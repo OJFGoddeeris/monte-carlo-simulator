@@ -5,9 +5,9 @@ import pandas as pd
 import streamlit as st
 
 st.set_page_config(
-    page_title=("Monte Carlo Portfolio Simulator",
+    page_title=("Monte Carlo Portfolio Simulator",)
     layout= "centered")
-    )
+
     
 st.markdown("Explore how your investment could grow over time with a Monte Carlo simulation.")
 
