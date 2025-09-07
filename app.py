@@ -8,7 +8,7 @@ st.set_page_config(page_title=("Monte Carlo Portfolio Simulator"), layout= "cent
 st. title("Monte Carlo Portfolio Simulator")
 st.markdown("Explore how your investment could grow over time with a Monte Carlo simulation.")
 
-initial_investment = st.number_input("Initial Investment (€)", value=10000, color = "Blue")
+initial_investment = st.number_input("Initial Investment (€)", value=10000)
 years = st.slider("Years", 1, 50, 30)
 simulations = st.slider("Simulations", 10, 500, 100)
 
