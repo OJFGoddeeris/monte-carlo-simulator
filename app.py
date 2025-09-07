@@ -84,7 +84,7 @@ elif chart_type =="Distribution (Histogram)":
     ax.set_ylabel("Frequency")
     st.pyplot(fig)
 
-elif chart_type =="Cumulative Probability (CDF)":
+elif chart_type =="Cumulative Probability CDF":
     sorted_vals = np.sort(final_values)
     cdf= np.arange(1, len(sorted_vals)+1) / len(sorted_vals)
     fig, ax= plt.subplots()
