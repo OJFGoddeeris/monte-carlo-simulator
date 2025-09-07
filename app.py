@@ -4,7 +4,11 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-st.set_page_config(page_title=("Monte Carlo Portfolio Simulator", layout = "centered"))
+st.set_page_config(
+    page_title=("Monte Carlo Portfolio Simulator",
+    layout= "centered")
+    )
+    
 st.markdown("Explore how your investment could grow over time with a Monte Carlo simulation.")
 
 initial_investment = st.number_input("Initial Investment (€)", value=10000)
