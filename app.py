@@ -5,12 +5,19 @@ import pandas as pd
 import streamlit as st
 
 st.set_page_config(page_title=("Monte Carlo Portfolio Simulator"), layout= "centered" )
-st. title("Monte Carlo Portfolio Simulator")
+st. title("Monte Carlo Portfolio Simulator📈")
 st.markdown("Explore how your investment could grow over time with a Monte Carlo simulation.")
 
 initial_investment = st.number_input("Initial Investment (€)", value=10000)
 years = st.slider("Years", 1, 50, 30)
 simulations = st.slider("Simulations", 10, 500, 100)
+
+st.subheader("Adjust Portfolio Weights")
+stock_w=st.slider("Stocks", 0.0, 1.0, 0.6, 0.05)
+bond_w=st.slider("Bonds", 0.0, 1.0, 0.3, 0.05)
+crypto_w=st.slider("Crypto", 0.0, 1.0, 0.1, 0.05)
+total = stock_w + bond_w + crypto_w
+weights =np.array([stock_w, bond_w, crypto_w]) / total
 
 # --- Define Assets ---
 assets = ["Stocks", "Bonds", "Crypto"]
@@ -26,7 +33,10 @@ cov = np.outer(sigma, sigma)*corr
 # --- Define Weights ---
 weights= np.array([0.6,0.3,0.1])
 
-
+fig, ax = plt.subplots()
+ax.pie(weights, labels=assets, autopct="%1.1f%%", startangle=90, colors=["#4daf4a","#377eb8","#e41a1c"])
+ax.set_title("Portfolio Allocation")
+st.pyplot(fig)
 
 chart_type = st.selectbox(
     "Choose a chart to display:",
