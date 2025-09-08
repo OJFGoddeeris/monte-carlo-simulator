@@ -41,7 +41,8 @@ for sim in range(simulations):
     path = [balance]
     for year in range(1, years + 1):
         annual_return = np.random.multivariate_normal(mu, cov)
-        balance *= (1+ annual_return)
+        portfolio_return=np.dots(weights, annual_return)
+        balance *= (1+ portfolio_return)
         path.append(balance)
     all_paths.append(path)
 
