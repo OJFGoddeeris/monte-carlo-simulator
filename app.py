@@ -12,6 +12,22 @@ initial_investment = st.number_input("Initial Investment (€)", value=10000)
 years = st.slider("Years", 1, 50, 30)
 simulations = st.slider("Simulations", 10, 500, 100)
 
+# --- Define Assets ---
+assets = ["Stocks", "Bonds", "Crypto"]
+mu=np.array([0.07, 0.03, 0.15])
+sigma=np.array([0.15, 0.05, 0.60])
+corr= np.array([
+    [1,0.2,0.1],
+    [0.2,1,-0.05],
+    [0.1,-0.05,1]
+])
+cov = np.outer(sigma, sigma)*corr
+
+# --- Define Weights ---
+weights= np.array([0.6,0.3,0.1])
+
+
+
 chart_type = st.selectbox(
     "Choose a chart to display:",
     ["Simulation Paths", "Distribution (Histogram)", "Boxplot", "Cumulative Probability CDF"]
@@ -24,7 +40,7 @@ for sim in range(simulations):
     balance = initial_investment
     path = [balance]
     for year in range(1, years + 1):
-        annual_return = np.random.normal(loc=0.07, scale=0.124)
+        annual_return = np.random.multivariate_normal(mu, cov)
         balance *= (1+ annual_return)
         path.append(balance)
     all_paths.append(path)
