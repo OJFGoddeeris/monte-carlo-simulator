@@ -33,7 +33,7 @@ cov = np.outer(sigma, sigma)*corr
 # --- Define Weights ---
 weights= np.array([stock_w,bond_w,crypto_w])
 
-fig, ax = plt.subplots(figsize=(2,2))
+fig, ax = plt.subplots(figsize=(5,3))
 ax.pie(weights, labels=assets, autopct="%1.1f%%", startangle=90, colors=["#4daf4a","#377eb8","#e41a1c"])
 ax.set_title("Portfolio Allocation")
 st.pyplot(fig)
