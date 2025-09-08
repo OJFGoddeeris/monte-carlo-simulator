@@ -31,7 +31,7 @@ corr= np.array([
 cov = np.outer(sigma, sigma)*corr
 
 # --- Define Weights ---
-weights= np.array([0.6,0.3,0.1])
+weights= np.array([stock_w,bond_w,crypto_w])
 
 fig, ax = plt.subplots()
 ax.pie(weights, labels=assets, autopct="%1.1f%%", startangle=90, colors=["#4daf4a","#377eb8","#e41a1c"])
