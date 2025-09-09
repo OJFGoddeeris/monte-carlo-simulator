@@ -13,9 +13,9 @@ years = st.slider("Years", 1, 50, 30)
 simulations = st.slider("Simulations", 10, 500, 100)
 
 st.subheader("Adjust Portfolio Weights")
-stocks_w= st.number_input("Stocks", min_value=0, max_value=1.0, value=0.6)
-bonds_w=st.number_input("Bonds", min_value=0, max_value=1.0, value=0.3)
-cryptos_w=st.number_input("Crypto", min_value=0, max_value=1.0, value=0.1)
+stocks_w= st.number_input("Stocks", min_value=0.0, max_value=1.0, value=0.6)
+bonds_w=st.number_input("Bonds", min_value=0.0, max_value=1.0, value=0.3)
+cryptos_w=st.number_input("Crypto", min_value=0.0, max_value=1.0, value=0.1)
 total = stocks_w + bonds_w + cryptos_w
 weights =np.array([stocks_w, bonds_w, cryptos_w]) / total
 
