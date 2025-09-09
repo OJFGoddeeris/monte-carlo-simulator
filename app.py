@@ -39,6 +39,8 @@ if np.isclose(total,1.0, atol=0.001):
     ax.pie(weights, labels=assets, autopct="%1.1f%%", startangle=90, colors=["#4daf4a","#377eb8","#e41a1c"], 
            textprops={"fontsize":9, "fontweight": "bold", "color": "white"})
     ax.set_title("Portfolio Allocation", fontdict={"fontsize":12, "fontweight":"bold", "color": "white"})
+    fig.patch.set_facecolor("black")
+    fig.patch.set_alpha(0.1)
     st.pyplot(fig)
 else:
     st.warning(f"Warning: The total portfolio weight is {total*100:,.2f}%. It needs to sum up to 100%. Normalizing the weights.")
@@ -46,7 +48,7 @@ else:
     bonds_w /= total
     cryptos_w /= total
 
-fig.patch.set_facecolor("Black")
+
 
 chart_type = st.selectbox(
     "Choose a chart to display:",
