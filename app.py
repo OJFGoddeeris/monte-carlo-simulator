@@ -19,9 +19,9 @@ cryptos_w=st.number_input("Crypto", min_value=0.0, max_value=1.0, value=0.1)
 total = stocks_w + bonds_w + cryptos_w
 weights =np.array([stocks_w, bonds_w, cryptos_w]) / total
 
-if total != 1:
-    st.write("ERROR = Portfolio weights need to add up to 100%!")
-else: st.write("Portfolio weights are correctly normalized.")
+if total == 1.0:
+    st.write("Portfolio weights are correctly normalized.")
+else: st.write("ERROR = Portfolio weights need to add up to 100%!")
 
 
 # --- Define Assets ---
