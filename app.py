@@ -32,7 +32,7 @@ corr= np.array([
 cov = np.outer(sigma, sigma)*corr
 
 
-if np.isclose(total,1.0, atol=0.01):
+if np.isclose(total,1.0, atol=0.001):
     weights= np.array([stocks_w,bonds_w,cryptos_w])
 
     fig, ax = plt.subplots(figsize=(5,3))
