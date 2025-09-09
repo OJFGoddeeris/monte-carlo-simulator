@@ -19,11 +19,14 @@ cryptos_w=st.number_input("Crypto", min_value=0.0, max_value=1.0, value=0.1)
 total = stocks_w + bonds_w + cryptos_w
 weights =np.array([stocks_w, bonds_w, cryptos_w]) / total
 
-if np.isclose(total, 1.0, atol=0.01):
-    st.write("Portfolio weights are correctly normalized.")
-else: 
-    st.write("ERROR = Portfolio weights need to add up to 100%!")
+total = stocks_w + bonds_w + cryptos_w
+if total != 1.0:
+    st.warning(f"Warning: The total portfolio weight is {total*100:.2f}%. It needs to sum up to 100%. Normalizing the weights.")
+    stocks_w /= total
+    bonds_w /= total
+    cryptos_w /= total
 
+weights = np.array([stocks_w, bonds_w, cryptos_w])
 
 # --- Define Assets ---
 assets = ["Stocks", "Bonds", "Crypto"]
