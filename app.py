@@ -40,7 +40,7 @@ if np.isclose(total,1.0, atol=0.001):
     ax.set_title("Portfolio Allocation")
     st.pyplot(fig)
 else:
-    st.warning(f"Warning: The total portfolio weight is {total:*100,.2f}%. It needs to sum up to 100%. Normalizing the weights.")
+    st.warning(f"Warning: The total portfolio weight is {total:*100:,.2f}%. It needs to sum up to 100%. Normalizing the weights.")
     stocks_w /= total
     bonds_w /= total
     cryptos_w /= total
