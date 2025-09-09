@@ -13,6 +13,11 @@ years = st.slider("Years", 1, 50, 30)
 simulations = st.slider("Simulations", 10, 500, 100)
 
 st.subheader("Adjust Portfolio Weights")
+stocks_w= st.number_input("Stocks (%)", min_value=0, max_value=100, value=60)
+bonds_w=st.number_input("Bonds (%)", min_value=0, max_value=100, value=30)
+cryptos_w=st.number_input("Crypto (%)", min_value=0, max_value=100, value=10)
+
+st.subheader("Adjust Portfolio Weights")
 stock_w=st.slider("Stocks (%)", 0.0, 1.0, 0.6, 0.05)
 bond_w=st.slider("Bonds (%)", 0.0, 1.0, 0.3, 0.05)
 crypto_w=st.slider("Crypto (%)", 0.0, 1.0, 0.1, 0.05)
@@ -31,7 +36,7 @@ corr= np.array([
 cov = np.outer(sigma, sigma)*corr
 
 # --- Define Weights ---
-weights= np.array([stock_w,bond_w,crypto_w])
+weights= np.array([stocks_w,bonds_w,cryptos_w])
 
 fig, ax = plt.subplots(figsize=(5,3))
 ax.pie(weights, labels=assets, autopct="%1.1f%%", startangle=90, colors=["#4daf4a","#377eb8","#e41a1c"])
