@@ -16,6 +16,12 @@ st.subheader("Adjust Portfolio Weights")
 stocks_w= st.number_input("Stocks (%)", min_value=0, max_value=100, value=60)
 bonds_w=st.number_input("Bonds (%)", min_value=0, max_value=100, value=30)
 cryptos_w=st.number_input("Crypto (%)", min_value=0, max_value=100, value=10)
+Total_weight = stocks_w + bonds_w + cryptos_w
+
+
+if Total_weight != 100:
+    print("ERROR = Portfolio weights need to add up to 100%!")
+else: print(" ")
 
 st.subheader("Adjust Portfolio Weights")
 stock_w=st.slider("Stocks (%)", 0.0, 1.0, 0.6, 0.05)
