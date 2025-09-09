@@ -16,8 +16,8 @@ st.subheader("Adjust Portfolio Weights")
 stock_w=st.slider("Stocks (%)", 0, 100, 60, 5)
 bond_w=st.slider("Bonds (%)", 0, 100, 30, 5)
 crypto_w=st.slider("Crypto (%)", 0, 100, 10, 5)
-weights =np.array([stock_w, bond_w, crypto_w]) / 100
-weights= weights/weights.sum()
+total = stock_w + bond_w + crypto_w
+weights =np.array([stock_w, bond_w, crypto_w]) / total
 
 # --- Define Assets ---
 assets = ["Stocks", "Bonds", "Crypto"]
