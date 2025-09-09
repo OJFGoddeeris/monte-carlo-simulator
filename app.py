@@ -32,7 +32,7 @@ corr= np.array([
 cov = np.outer(sigma, sigma)*corr
 
 
-if total != 1.0:
+if np.isclose(total,1.0, atol=0.01):
     st.warning(f"Warning: The total portfolio weight is {total*100:.2f}%. It needs to sum up to 100%. Normalizing the weights.")
     stocks_w /= total
     bonds_w /= total
