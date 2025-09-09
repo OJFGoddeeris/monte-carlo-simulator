@@ -20,15 +20,7 @@ total = stocks_w + bonds_w + cryptos_w
 weights =np.array([stocks_w, bonds_w, cryptos_w]) / total
 
 total = stocks_w + bonds_w + cryptos_w
-if total != 1.0:
-    st.warning(f"Warning: The total portfolio weight is {total*100:.2f}%. It needs to sum up to 100%. Normalizing the weights.")
-    stocks_w /= total
-    bonds_w /= total
-    cryptos_w /= total
 
-weights = np.array([stocks_w, bonds_w, cryptos_w])
-
-# --- Define Assets ---
 assets = ["Stocks", "Bonds", "Crypto"]
 mu=np.array([0.07, 0.03, 0.15])
 sigma=np.array([0.15, 0.05, 0.60])
@@ -39,13 +31,22 @@ corr= np.array([
 ])
 cov = np.outer(sigma, sigma)*corr
 
-# --- Define Weights ---
-weights= np.array([stocks_w,bonds_w,cryptos_w])
 
-fig, ax = plt.subplots(figsize=(5,3))
-ax.pie(weights, labels=assets, autopct="%1.1f%%", startangle=90, colors=["#4daf4a","#377eb8","#e41a1c"])
-ax.set_title("Portfolio Allocation")
-st.pyplot(fig)
+if total != 1.0:
+    st.warning(f"Warning: The total portfolio weight is {total*100:.2f}%. It needs to sum up to 100%. Normalizing the weights.")
+    stocks_w /= total
+    bonds_w /= total
+    cryptos_w /= total
+else:
+    weights= np.array([stocks_w,bonds_w,cryptos_w])
+
+    fig, ax = plt.subplots(figsize=(5,3))
+    ax.pie(weights, labels=assets, autopct="%1.1f%%", startangle=90, colors=["#4daf4a","#377eb8","#e41a1c"])
+    ax.set_title("Portfolio Allocation")
+    st.pyplot(fig)
+
+
+
 
 chart_type = st.selectbox(
     "Choose a chart to display:",
