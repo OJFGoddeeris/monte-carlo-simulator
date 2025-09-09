@@ -33,18 +33,17 @@ cov = np.outer(sigma, sigma)*corr
 
 
 if np.isclose(total,1.0, atol=0.01):
-    st.warning(f"Warning: The total portfolio weight is {total*100:.2f}%. It needs to sum up to 100%. Normalizing the weights.")
-    stocks_w /= total
-    bonds_w /= total
-    cryptos_w /= total
-else:
     weights= np.array([stocks_w,bonds_w,cryptos_w])
 
     fig, ax = plt.subplots(figsize=(5,3))
     ax.pie(weights, labels=assets, autopct="%1.1f%%", startangle=90, colors=["#4daf4a","#377eb8","#e41a1c"])
     ax.set_title("Portfolio Allocation")
     st.pyplot(fig)
-
+else:
+    st.warning(f"Warning: The total portfolio weight is {total*100:.2f}%. It needs to sum up to 100%. Normalizing the weights.")
+    stocks_w /= total
+    bonds_w /= total
+    cryptos_w /= total
 
 
 
